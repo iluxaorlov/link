@@ -1,0 +1,122 @@
+header {
+    background-color: $secondColor;
+    text-align: center;
+}
+
+#logotype {
+    text-align: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+#form {
+    display: flex;
+    padding-bottom: 64px;
+
+    @media (max-width: 640px) {
+        flex-direction: column;
+    }
+
+    #form__address {
+        border: none;
+        font-size: 16px;
+        padding: 16px;
+        border-radius: 4px;
+
+        @media (min-width: 640px) {
+            width: 100%;
+            margin-right: 16px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 16px;
+        }
+
+        &::placeholder {
+            color: $secondColor;
+        }
+    }
+
+    #form__submit {
+        justify-content: center;
+        align-items: center;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        color: #ffffff;
+        background-color: $firstColor;
+        padding: 16px;
+        border-radius: 4px;
+    }
+}
+
+#triangle {
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-top: 2vw solid $secondColor;
+    margin-bottom: 64px;
+}
+
+#description {
+    margin: 0 auto;
+    font-size: 32px;
+    text-align: center;
+    font-weight: 300;
+    max-width: 960px;
+    padding: 0 16px;
+    margin-bottom: 64px;
+}
+
+#tool {
+    display: grid;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 64px;
+
+    @media (min-width: 640px) {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 64px;
+    }
+
+    .tool__item {
+        display: block;
+
+        .tool__item__icon {
+            font-size: 64px;
+            color: $firstColor;
+            margin-bottom: 16px;
+        }
+
+        .tool__item__head {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .tool__item__body {
+            font-size: 16px;
+        }
+    }
+}
+
+#output {
+    display: none;
+    text-align: center;
+    margin-bottom: 64px;
+
+    #output__head {
+        font-size: 32px;
+        font-weight: 300;
+        margin-bottom: 16px;
+    }
+
+    #output__link {
+        color: $firstColor;
+        text-decoration: none;
+    }
+}
