@@ -5,6 +5,7 @@ use Slim\Views\Twig;
 use Slim\Http\Uri;
 use Slim\Http\Environment;
 use Slim\Views\TwigExtension;
+use App\Handler\NotFoundHandler;
 use App\Controller\IndexController;
 use App\Controller\DirectionController;
 
@@ -28,6 +29,10 @@ $container['view'] = function ($container) {
     $view->addExtension(new TwigExtension($router, $uri));
 
     return $view;
+};
+
+$container['notFoundHandler'] = function ($container) {
+    return new NotFoundHandler($container['view']);
 };
 
 $app->get('/', IndexController::class . ':index')->setName('index');

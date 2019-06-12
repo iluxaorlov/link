@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block title %}Ошибка • Link{% endblock %}
+
+{% block body %}
+    <div id="error">
+        <h1 id="error__head">Ай! Ошибка</h1>
+        <p class="error__body">Мы правда очень пытались, но не нашли такой ссылки 🙁</p>
+        <p class="error__body">Давайте её создадим? 🙂 <a id="error__body__link" href="{{ path_for('index') }}">Давайте!</a></p>
+    </div>
+{% endblock %}

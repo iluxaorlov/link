@@ -4,9 +4,19 @@ header {
 }
 
 #logotype {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-top: 64px;
     padding-bottom: 64px;
+
+    #logotype__link {
+
+        #logotype__image {
+            display: flex;
+            height: 32px;
+        }
+    }
 }
 
 #form {
@@ -21,7 +31,6 @@ header {
         border: none;
         font-size: 16px;
         padding: 16px;
-        border-radius: 4px;
 
         @media (min-width: 640px) {
             width: 100%;
@@ -46,25 +55,26 @@ header {
         color: #ffffff;
         background-color: $firstColor;
         padding: 16px;
-        border-radius: 4px;
+        text-transform: uppercase;
     }
 }
 
 #triangle {
     border-left: 50vw solid transparent;
     border-right: 50vw solid transparent;
-    border-top: 2vw solid $secondColor;
+    border-top: 3vw solid $secondColor;
     margin-bottom: 64px;
 }
 
 #description {
     margin: 0 auto;
-    font-size: 32px;
     text-align: center;
     font-weight: 300;
     max-width: 960px;
     padding: 0 16px;
     margin-bottom: 64px;
+    font-size: 32px;
+    line-height: 1.5;
 }
 
 #tool {
@@ -118,5 +128,9 @@ header {
     #output__link {
         color: $firstColor;
         text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

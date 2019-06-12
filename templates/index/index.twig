@@ -1,35 +1,23 @@
 {% extends "base.twig" %}
 
+{% block title %}Link • Сокращайте ссылки и отслеживайте трафик{% endblock %}
+
 {% block body %}
     <header>
         <section class="container">
             <div id="logotype">
-                <a href="{{ path_for('index') }}"><img src="/public/img/logo.svg" height="32"></a>
+                <a id="logotype__link" href="{{ path_for('index') }}"><img id="logotype__image" src="/public/img/logo.svg"></a>
             </div>
             <form id="form" action="{{ path_for('create') }}" method="POST">
-                <input id="form__address" type="text" name="address" placeholder="Введите вашу ссылку" autocomplete="off">
+                <input id="form__address" type="text" name="address" placeholder="Введите сюда вашу ссылку" autocomplete="off">
                 <button id="form__submit" type="submit">Сократить</button>
             </form>
         </section>
     </header>
     <section id="triangle"></section>
     <section id="output">
-        <h3 id="output__head">Ваша ссылка</h3>
+        <h2 id="output__head">Ваша короткая ссылка</h2>
         <a id="output__link" href="" target="_blank"></a>
     </section>
-    <h2 id="description">Создавайте короткие ссылки, которые легко запомнить. Просматривайте статистику переходов на ваш сайт.</h2>
-    <section class="container">
-        <ul id="tool">
-            <li class="tool__item">
-                <div class="tool__item__icon"><i class="fas fa-cut"></i></div>
-                <h3 class="tool__item__head">Сокращайте</h3>
-                <p class="tool__item__body">Короткими ссылками удобнее делиться в социальных сетях</p>
-            </li>
-            <li class="tool__item">
-                <div class="tool__item__icon"><i class="fas fa-chart-pie"></i></div>
-                <h3 class="tool__item__head">Анализируйте</h3>
-                <p class="tool__item__body">Отслеживайте трафик и анализируйте эффективность рекламы</p>
-            </li>
-        </ul>
-    </section>
+    <h1 id="description">Устали от длинных и некрасивых ссылок? Сокращайте! Такими ссылками удобно делиться в социальных сетях и легко запомнить.</h1>
 {% endblock %}
