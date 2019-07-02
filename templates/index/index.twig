@@ -1,23 +1,25 @@
 {% extends "base.twig" %}
 
-{% block title %}Link • Сокращайте ссылки и отслеживайте трафик{% endblock %}
+{% block title %}Linky • Сокращайте ссылки{% endblock %}
 
 {% block body %}
-    <header>
-        <section class="container">
-            <div id="logotype">
-                <a id="logotype__link" href="{{ path_for('index') }}"><img id="logotype__image" src="/public/img/logo.svg"></a>
-            </div>
-            <form id="form" action="{{ path_for('create') }}" method="POST">
-                <input id="form__address" type="text" name="address" placeholder="Введите сюда вашу ссылку" autocomplete="off">
-                <button id="form__submit" type="submit">Сократить</button>
-            </form>
-        </section>
-    </header>
-    <section id="triangle"></section>
-    <section id="output">
-        <h2 id="output__head">Ваша короткая ссылка</h2>
-        <a id="output__link" href="" target="_blank"></a>
-    </section>
-    <h1 id="description">Устали от длинных и некрасивых ссылок? Сокращайте! Такими ссылками удобно делиться в социальных сетях и легко запомнить.</h1>
+    {% include 'index/notification.twig' %}
+
+    <div class="container">
+        <div id="logotype">
+            <a id="logotype__link" href="{{ path_for('index') }}"><img id="logotype__image" src="./public/img/logotype.svg" alt=""></a>
+        </div>
+        <div id="form">
+            <input id="form__address" name="address" type="text" placeholder="Что нужно сократить?" autocomplete="off" autofocus>
+            {% if links %}
+                {% for link in links %}
+                    <div class="item">
+                        <a class="item__link" href="{{ link }}" target="_blank">{{ link }}</a>
+                        <i class="item__copy fas fa-copy"></i>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <p id="author">Разработал <a id="author__link" href="https://github.com/iluxaorlov" target="_blank">Илья Орлов</a></p>
+    </div>
 {% endblock %}

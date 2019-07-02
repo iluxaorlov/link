@@ -1,0 +1,29 @@
+{
+  "name": "projectLinky",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iluxaorlov/projectLinky.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iluxaorlov/projectLinky/issues"
+  },
+  "homepage": "https://github.com/iluxaorlov/projectLinky#readme",
+  "devDependencies": {
+    "css-loader": "*",
+    "mini-css-extract-plugin": "*",
+    "node-sass": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
+  }
+}
