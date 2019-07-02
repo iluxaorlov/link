@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\RedirectController;
 use Slim\App;
 use Slim\Views\Twig;
 use Slim\Http\Uri;
@@ -36,7 +37,9 @@ $container['notFoundHandler'] = function ($container) {
 };
 
 $app->get('/', IndexController::class . ':index')->setName('index');
+
 $app->post('/', DirectionController::class . ':create')->setName('create');
-$app->get('/{link}', DirectionController::class . ':redirect')->setName('redirect');
+
+$app->get('/{link}', RedirectController::class . ':redirect')->setName('redirect');
 
 $app->run();

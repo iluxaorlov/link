@@ -4,40 +4,33 @@ namespace App\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Exception\NotFoundException;
 use App\Model\Direction;
 
 class DirectionController
 {
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     */
     public function create(Request $request, Response $response)
     {
         $address = $request->getParam('address');
-        $address = htmlentities($address);
+        $address = preg_replace('/\s*/', '', $address);
 
-        switch (true) {
-            case preg_match('/\s/', $address):
-            case !preg_match('/\w{2,}\.\w{2,}/', $address):
-                return $response->withStatus(400);
+        if (!preg_match('/^([a-z]+\:\/*)?([a-zа-я0-9]+(\.[a-zа-я0-9]+)+)/', $address)) {
+            return $response->withJson([
+                'error' => 'Invalid address'
+            ])->withStatus(400);
         }
 
-        $direction = Direction::create($address, $response);
+        $direction = Direction::create($address);
+        $link = 'https://' . $_SERVER['SERVER_NAME'] . '/' . $direction->getLink();
+
+        SessionController::addLinkToSession($direction->getLink());
 
         return $response->withJson([
-            'direction' => 'https://' . $_SERVER['SERVER_NAME'] . '/' . $direction->getLink(),
+            'link' => $link
         ]);
-    }
-
-    public function redirect(Request $request, Response $response, array $args)
-    {
-        $link = $args['link'];
-        $direction = Direction::findOneByLink($link);
-
-        if (!$direction) {
-            throw new NotFoundException($request, $response);
-        }
-
-        $address = $direction->getScheme() . '://' . $direction->getPath();
-
-        return $response->withRedirect($address);
     }
 }

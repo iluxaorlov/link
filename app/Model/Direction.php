@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace App\Model;
 
 use App\Database\Database;
@@ -16,22 +14,12 @@ class Direction extends Record
     /**
      * @var string
      */
-    protected $scheme;
-
-    /**
-     * @var string
-     */
-    protected $path;
+    protected $address;
 
     /**
      * @var string
      */
     protected $link;
-
-    /**
-     * @var string
-     */
-    protected $date;
 
     /**
      * @return string
@@ -56,45 +44,24 @@ class Direction extends Record
     public function setId(string $id): self
     {
         $this->id = $id;
-
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getScheme(): string
+    public function getAddress(): string
     {
-        return $this->scheme;
+        return $this->address;
     }
 
     /**
-     * @param string $scheme
+     * @param string $address
      * @return self
      */
-    public function setScheme(string $scheme): self
+    public function setAddress(string $address): self
     {
-        $this->scheme = $scheme;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPath(): string
-    {
-        return $this->path;
-    }
-
-    /**
-     * @param string $path
-     * @return self
-     */
-    public function setPath(string $path): self
-    {
-        $this->path = $path;
-
+        $this->address = $address;
         return $this;
     }
 
@@ -113,7 +80,6 @@ class Direction extends Record
     public function setLink(string $link): self
     {
         $this->link = $link;
-
         return $this;
     }
 
@@ -124,10 +90,10 @@ class Direction extends Record
     public static function create(string $address): self
     {
         $direction = new self();
-        $direction->setScheme(self::parseScheme($address))
-                  ->setPath(self::parsePath($address))
-                  ->setLink(self::generateLink())
-                  ->write();
+        $direction
+            ->setAddress(self::parseAddress($address))
+            ->setLink(self::generateLink())
+            ->write();
 
         return $direction;
     }
@@ -136,37 +102,13 @@ class Direction extends Record
      * @param string $address
      * @return string
      */
-    private static function parseScheme(string $address): string
+    private static function parseAddress(string $address): string
     {
-        $address = self::clearAddress($address);
-        $schemeMatch = preg_match('/^\w*:\/*/', $address, $matches);
-        $scheme = $matches[0];
-        $scheme = preg_replace('/:\/+$/', '', $scheme);
-
-        return $scheme ?: 'http';
-    }
-
-    /**
-     * @param string $address
-     * @return string
-     */
-    private static function parsePath(string $address): string
-    {
-        $address = self::clearAddress($address);
-        $path = preg_replace('/^\w*:\/*/', '', $address);
-        $path = preg_replace('/\/*$/', '', $path);
-
-        return $path;
-    }
-
-    /**
-     * @param string $address
-     * @return string
-     */
-    private static function clearAddress(string $address): string
-    {
-        $address = htmlentities($address);
         $address = preg_replace('/\s*/', '', $address);
+
+        if (!preg_match('/^([A-Za-z]{2,}\:\/*)/', $address)) {
+            $address = 'http://' . $address;
+        }
 
         return $address;
     }
@@ -219,7 +161,8 @@ class Direction extends Record
     {
         $database = Database::getInstance();
         $sql = 'SELECT * FROM ' . self::getTableName() . ' WHERE link = :link';
-        $result = $database->query($sql, ['link' => $link], self::class)[0];
+        $result = $database->query($sql, ['link' => $link], self::class);
+        $result = $result[0];
 
         return $result;
     }
