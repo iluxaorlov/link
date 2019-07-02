@@ -161,8 +161,7 @@ class Direction extends Record
     {
         $database = Database::getInstance();
         $sql = 'SELECT * FROM ' . self::getTableName() . ' WHERE link = :link';
-        $result = $database->query($sql, ['link' => $link], self::class);
-        $result = $result[0];
+        $result = $database->query($sql, ['link' => $link], self::class)[0];
 
         return $result;
     }

@@ -1,5 +1,5 @@
-$firstColor: #0080ff;
-$secondColor: #cfdae5;
+$firstColor: #ff8000;
+$secondColor: #e5dacf;
 
 * {
     margin: 0;
@@ -10,11 +10,12 @@ $secondColor: #cfdae5;
     body {
         margin-right: calc(100% - 100vw);
         overflow-x: hidden;
+        background-color: $secondColor;
 
         .container {
             max-width: 640px;
-            padding: 0 16px;
             margin: 0 auto;
+            padding: 0 16px;
         }
     }
 }

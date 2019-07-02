@@ -5,111 +5,82 @@
   outline: none; }
   * body {
     margin-right: calc(100% - 100vw);
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    background-color: #e5dacf; }
     * body .container {
       max-width: 640px;
-      padding: 0 16px;
-      margin: 0 auto; }
-
-header {
-  background-color: #cfdae5;
-  text-align: center; }
+      margin: 0 auto;
+      padding: 0 16px; }
 
 #logotype {
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding-top: 64px;
-  padding-bottom: 64px; }
-  #logotype #logotype__link #logotype__image {
-    display: flex;
-    height: 32px; }
+  align-items: center;
+  padding: 48px 0; }
+  #logotype #logotype__link {
+    display: flex; }
+  #logotype #logotype__image {
+    height: 96px; }
 
 #form {
   display: flex;
-  padding-bottom: 64px; }
-  @media (max-width: 640px) {
-    #form {
-      flex-direction: column; } }
+  flex-direction: column;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 16px 32px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom: 48px; }
   #form #form__address {
-    border: none;
-    font-size: 16px;
-    padding: 16px; }
-    @media (min-width: 640px) {
-      #form #form__address {
-        width: 100%;
-        margin-right: 16px; } }
-    @media (max-width: 640px) {
-      #form #form__address {
-        margin-bottom: 16px; } }
-    #form #form__address::placeholder {
-      color: #cfdae5; }
-  #form #form__submit {
-    justify-content: center;
-    align-items: center;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #0080ff;
     padding: 16px;
-    text-transform: uppercase; }
+    font-size: 16px;
+    border: none;
+    background: none;
+    border-radius: 4px 4px 0 0; }
+    #form #form__address::placeholder {
+      color: #e5dacf;
+      font-weight: 400; }
+    #form #form__address:only-child {
+      border-radius: 4px; }
+  #form .item {
+    border-top: solid 1px #e5dacf;
+    display: flex;
+    justify-content: space-between; }
+    #form .item .item__link {
+      color: #ff8000;
+      text-decoration: none;
+      margin: 16px; }
+    #form .item .item__copy {
+      display: flex;
+      background: none;
+      border: none;
+      font-size: 19px;
+      color: #ff8000;
+      cursor: pointer;
+      padding: 16px;
+      transition: translate 500ms linear; }
 
-#triangle {
-  border-left: 50vw solid transparent;
-  border-right: 50vw solid transparent;
-  border-top: 3vw solid #cfdae5;
-  margin-bottom: 64px; }
-
-#description {
-  margin: 0 auto;
+#author {
   text-align: center;
-  font-weight: 300;
-  max-width: 960px;
-  padding: 0 16px;
-  margin-bottom: 64px;
-  font-size: 32px;
-  line-height: 1.5; }
-
-#tool {
-  display: grid;
-  margin: 0 auto;
-  text-align: center;
-  margin-bottom: 64px; }
-  @media (min-width: 640px) {
-    #tool {
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 16px; } }
-  @media (max-width: 640px) {
-    #tool {
-      grid-template-rows: 1fr 1fr;
-      grid-gap: 64px; } }
-  #tool .tool__item {
-    display: block; }
-    #tool .tool__item .tool__item__icon {
-      font-size: 64px;
-      color: #0080ff;
-      margin-bottom: 16px; }
-    #tool .tool__item .tool__item__head {
-      font-size: 32px;
-      font-weight: 300;
-      margin-bottom: 16px; }
-    #tool .tool__item .tool__item__body {
-      font-size: 16px; }
-
-#output {
-  display: none;
-  text-align: center;
-  margin-bottom: 64px; }
-  #output #output__head {
-    font-size: 32px;
-    font-weight: 300;
-    margin-bottom: 16px; }
-  #output #output__link {
-    color: #0080ff;
+  margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.5); }
+  #author #author__link {
+    color: #ff8000;
     text-decoration: none; }
-    #output #output__link:hover {
-      text-decoration: underline; }
+
+#notification {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden; }
+  #notification #notification__text {
+    display: inline-flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding: 16px;
+    border-radius: 4px; }
 
 #error {
   padding: 0 16px;
@@ -128,7 +99,7 @@ header {
   #error .error__body {
     line-height: 1.5; }
     #error .error__body #error__body__link {
-      color: #0080ff;
+      color: #ff8000;
       text-decoration: none; }
       #error .error__body #error__body__link:hover {
         text-decoration: underline; }
