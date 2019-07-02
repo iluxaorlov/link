@@ -14,37 +14,28 @@ abstract class SessionController
         ]);
     }
 
-    /**
-     * @param string $link
-     */
-    public static function addLinkToSession(string $link): void
+    public static function addLink(string $link): void
     {
         self::startSession();
 
-        if (!$_SESSION['links']) {
-            $_SESSION['links'] = [];
-        }
-
-        array_unshift($_SESSION['links'], $link);
+        $_SESSION['link'] = $link;
     }
 
     /**
-     * @return array
+     * @return string|null
      */
-    public static function getLinksFromSession(): array
+    public static function getLink(): ?string
     {
         self::startSession();
 
-        $links = [];
-
-        foreach ($_SESSION['links'] as $link) {
-            $direction = Direction::findOneByLink($link);
+        if ($_SESSION['link']) {
+            $direction = Direction::findOneByLink($_SESSION['link']);
 
             if ($direction) {
-                $links[] = 'https://' . $_SERVER['SERVER_NAME'] . '/' . $direction->getLink();
+                return 'https://' . $_SERVER['SERVER_NAME'] . '/' . $direction->getLink();
             }
         }
 
-        return $links;
+        return null;
     }
 }

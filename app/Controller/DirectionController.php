@@ -26,8 +26,7 @@ class DirectionController
 
         $direction = Direction::create($address);
         $link = 'https://' . $_SERVER['SERVER_NAME'] . '/' . $direction->getLink();
-
-        SessionController::addLinkToSession($direction->getLink());
+        SessionController::addLink($direction->getLink());
 
         return $response->withJson([
             'link' => $link

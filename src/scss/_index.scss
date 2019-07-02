@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 48px 0;
+    padding: 60px 0;
 
     #logotype__link {
         display: flex;
     }
     
     #logotype__image {
-        height: 96px;
+        height: 120px;
     }
 }
 
@@ -17,14 +17,13 @@
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    margin-bottom: 16px;
     background-color: #ffffff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 16px 32px 0 rgba(0, 0, 0, 0.25);
-    margin-bottom: 48px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25), 0 20px 40px 0 rgba(0, 0, 0, 0.25);
+    margin-bottom: 60px;
 
     #form__address {
-        padding: 16px;
-        font-size: 16px;
+        padding: 20px;
+        font-size: 17px;
         border: none;
         background: none;
         border-radius: 4px 4px 0 0;
@@ -39,25 +38,25 @@
         }
     }
 
-    .item {
+    #past {
         border-top: solid 1px $secondColor;
         display: flex;
         justify-content: space-between;
 
-        .item__link {
+        #past__link {
             color: $firstColor;
             text-decoration: none;
-            margin: 16px;
+            margin: 20px;
         }
 
-        .item__copy {
+        #past__copy {
             display: flex;
             background: none;
             border: none;
-            font-size: 19px;
+            font-size: 20px;
             color: $firstColor;
             cursor: pointer;
-            padding: 16px;
+            padding: 20px;
             transition: translate 500ms linear;
         }
     }
@@ -65,12 +64,14 @@
 
 #author {
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     color: rgba(0, 0, 0, 0.5);
+    font-size: 17px;
 
     #author__link {
         color: $firstColor;
         text-decoration: none;
+        font-size: 17px;
     }
 }
 
