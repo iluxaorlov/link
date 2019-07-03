@@ -1,4 +1,4 @@
-function copy() {
+export default function copy() {
     let range = document.createRange();
     let selection = window.getSelection();
     selection.removeAllRanges();
@@ -6,17 +6,15 @@ function copy() {
     selection.addRange(range);
     document.execCommand('copy');
     selection.removeAllRanges();
-    click(this);
+    click.call(this);
 }
 
-function click(element) {
-    element.style.color = '#00ff00';
-    element.style.transition = '';
+function click() {
+    this.style.opacity = '0.5';
+    this.style.transition = '';
 
-    setTimeout(function() {
-        element.style.color = '';
-        element.style.transition = 'color 500ms linear';
+    setTimeout(() => {
+        this.style.opacity = '';
+        this.style.transition = 'opacity 500ms linear';
     }, 1000);
 }
-
-export default copy;

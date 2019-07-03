@@ -18,24 +18,36 @@ abstract class SessionController
     {
         self::startSession();
 
-        $_SESSION['link'] = $link;
+        if (!$_SESSION['links']) {
+            $_SESSION['links'] = [];
+        }
+
+        if (count($_SESSION['links']) === 3) {
+            array_pop($_SESSION['links']);
+        }
+
+        array_unshift($_SESSION['links'], $link);
     }
 
     /**
-     * @return string|null
+     * @return array
      */
-    public static function getLink(): ?string
+    public static function getLink(): array
     {
         self::startSession();
 
-        if ($_SESSION['link']) {
-            $direction = Direction::findOneByLink($_SESSION['link']);
+        $result = [];
 
-            if ($direction) {
-                return 'https://' . $_SERVER['SERVER_NAME'] . '/' . $direction->getLink();
+        if ($_SESSION['links']) {
+            foreach ($_SESSION['links'] as $link) {
+                $direction = Direction::findOneByLink($link);
+
+                if ($direction) {
+                    $result[] = 'https://' . $_SERVER['SERVER_NAME'] . '/' . $direction->getLink();
+                }
             }
         }
 
-        return null;
+        return $result;
     }
 }

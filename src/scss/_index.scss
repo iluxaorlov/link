@@ -2,31 +2,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 0;
+    padding: 48px 0;
 
     #logotype__link {
         display: flex;
     }
     
     #logotype__image {
-        height: 120px;
+        height: 96px;
     }
 }
 
 #form {
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
+    border-radius: 16px;
     background-color: #ffffff;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25), 0 20px 40px 0 rgba(0, 0, 0, 0.25);
-    margin-bottom: 60px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25), 0 32px 64px 0 rgba(0, 0, 0, 0.25);
+    margin-bottom: 96px;
 
     #form__address {
-        padding: 20px;
-        font-size: 17px;
+        padding: 16px;
+        font-size: 16px;
         border: none;
         background: none;
-        border-radius: 4px 4px 0 0;
+        border-radius: 16px 16px 0 0;
 
         &::placeholder {
             color: $secondColor;
@@ -34,61 +34,46 @@
         }
 
         &:only-child {
-            border-radius: 4px;
+            border-radius: 16px;
         }
     }
 
-    #past {
+    .past {
         border-top: solid 1px $secondColor;
         display: flex;
         justify-content: space-between;
 
-        #past__link {
+        .past__link {
             color: $firstColor;
             text-decoration: none;
-            margin: 20px;
+            margin: 16px;
+            font-size: 16px;
         }
 
-        #past__copy {
+        .past__copy {
             display: flex;
+            justify-content: center;
+            align-items: center;
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 16px;
             color: $firstColor;
             cursor: pointer;
-            padding: 20px;
             transition: translate 500ms linear;
+            width: 51px;
         }
     }
 }
 
 #author {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     color: rgba(0, 0, 0, 0.5);
-    font-size: 17px;
+    font-size: 16px;
 
     #author__link {
         color: $firstColor;
         text-decoration: none;
-        font-size: 17px;
-    }
-}
-
-#notification {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 16px;
-    text-align: center;
-    opacity: 0;
-    visibility: hidden;
-
-    #notification__text {
-        display: inline-flex;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #ffffff;
-        padding: 16px;
-        border-radius: 4px;
+        font-size: 16px;
     }
 }

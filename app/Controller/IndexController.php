@@ -14,10 +14,10 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, Response $response)
     {
-        $link = SessionController::getLink();
+        $links = SessionController::getLink();
 
         return $this->container->view->render($response, 'index/index.twig', [
-            'link' => $link
+            'links' => $links
         ]);
     }
 }

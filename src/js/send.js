@@ -1,4 +1,4 @@
-function send(address) {
+export default function send(address) {
     let xhr = new XMLHttpRequest();
     // creating json object
     let json = JSON.stringify({
@@ -29,12 +29,15 @@ function send(address) {
 function create(responseText) {
     let json = JSON.parse(responseText);
 
-    if (document.getElementById('past')) {
-        document.getElementById('past').innerHTML = `<a id="past__link" href="${json.link}" target="_blank">${json.link}</a><i id="past__copy" class="fas fa-copy"></i>`;
-    } else {
-        let item = `<div id="past"><a class="past__link" href="${json.link}" target="_blank">${json.link}</a><i id="past__copy" class="fas fa-copy"></i></div>`;
-        document.getElementById('form__address').insertAdjacentHTML('afterend', item);
+    while (document.getElementsByClassName('past').length === 3) {
+        // delete oldest link before insert new
+        document.getElementsByClassName('past')[2].remove();
     }
+
+    // creating html code of link
+    let item = `<div class="past"><a class="past__link" href="${json.link}" target="_blank">${json.link}</a><i class="past__copy fas fa-copy"></i></div>`;
+    // insert link in document
+    document.getElementById('form__address').insertAdjacentHTML('afterend', item);
 }
 
 function error() {
@@ -46,5 +49,3 @@ function error() {
         document.getElementById('form__address').style.transition = 'background-color 500ms linear'
     }, 1000);
 }
-
-export default send;

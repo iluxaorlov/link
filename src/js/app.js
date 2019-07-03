@@ -18,7 +18,7 @@ document.getElementById('form__address').addEventListener('paste', function() {
 document.getElementById('form').addEventListener('click', function(event) {
     let element = event.target;
 
-    if (element.id === 'past__copy') {
+    if (element.className === 'past__copy fas fa-copy') {
         copy.call(element);
     }
 });

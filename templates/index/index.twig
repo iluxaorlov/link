@@ -9,11 +9,13 @@
         </div>
         <div id="form">
             <input id="form__address" name="address" type="text" placeholder="Что нужно сократить?" autocomplete="off">
-            {% if link %}
-                <div id="past">
-                    <a id="past__link" href="{{ link }}" target="_blank">{{ link }}</a>
-                    <i id="past__copy" class="fas fa-copy"></i>
-                </div>
+            {% if links %}
+                {% for link in links %}
+                    <div class="past">
+                        <a class="past__link" href="{{ link }}" target="_blank">{{ link }}</a>
+                        <i class="past__copy fas fa-copy"></i>
+                    </div>
+                {% endfor %}
             {% endif %}
         </div>
         <p id="author">Разработал <a id="author__link" href="https://github.com/iluxaorlov" target="_blank">Илья Орлов</a></p>
