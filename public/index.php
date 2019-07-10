@@ -12,6 +12,11 @@ use App\Controller\DirectionController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+session_name('LINKY');
+session_start([
+    'cookie_lifetime' => 365 * 24 * 60 * 60
+]);
+
 $settings = require_once __DIR__ . '/../app/Settings/App.php';
 
 $app = new App([
@@ -37,9 +42,7 @@ $container['notFoundHandler'] = function ($container) {
 };
 
 $app->get('/', IndexController::class . ':index')->setName('index');
-
 $app->post('/', DirectionController::class . ':create')->setName('create');
-
 $app->get('/{link}', RedirectController::class . ':redirect')->setName('redirect');
 
 $app->run();

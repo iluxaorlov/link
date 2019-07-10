@@ -6,18 +6,8 @@ use App\Model\Direction;
 
 abstract class SessionController
 {
-    private static function startSession(): void
-    {
-        session_name('LINKY');
-        session_start([
-            'cookie_lifetime' => 365 * 24 * 60 * 60
-        ]);
-    }
-
     public static function addLink(string $link): void
     {
-        self::startSession();
-
         if (!$_SESSION['links']) {
             $_SESSION['links'] = [];
         }
@@ -34,8 +24,6 @@ abstract class SessionController
      */
     public static function getLink(): array
     {
-        self::startSession();
-
         $result = [];
 
         if ($_SESSION['links']) {

@@ -25,7 +25,7 @@
 #form {
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 4px;
   background-color: #ffffff;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25), 0 32px 64px 0 rgba(0, 0, 0, 0.25);
   margin-bottom: 96px; }
@@ -34,12 +34,12 @@
     font-size: 16px;
     border: none;
     background: none;
-    border-radius: 16px 16px 0 0; }
+    border-radius: 4px 4px 0 0; }
     #form #form__address::placeholder {
       color: #e5dacf;
       font-weight: 400; }
     #form #form__address:only-child {
-      border-radius: 16px; }
+      border-radius: 4px; }
   #form .past {
     border-top: solid 1px #e5dacf;
     display: flex;
@@ -62,17 +62,6 @@
       cursor: pointer;
       transition: translate 500ms linear;
       width: 51px; }
-
-#author {
-  text-align: center;
-  margin-bottom: 16px;
-  font-size: 16px; }
-  #author #author__link {
-    color: #ff8000;
-    text-decoration: none;
-    font-size: 16px; }
-    #author #author__link:hover {
-      text-decoration: underline; }
 
 #error {
   padding: 0 16px;

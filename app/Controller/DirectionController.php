@@ -18,7 +18,7 @@ class DirectionController
         $address = $request->getParam('address');
         $address = preg_replace('/\s*/', '', $address);
 
-        if (!preg_match('/^([a-z]+\:\/*)?([a-zа-я0-9]+(\.[a-zа-я0-9]+)+)/', $address)) {
+        if (!preg_match('/^([\w]+\:\/*)?([\w\d]+(\.[\w\d]+)+)/', $address)) {
             return $response->withJson([
                 'error' => 'Invalid address'
             ])->withStatus(400);

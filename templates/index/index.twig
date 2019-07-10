@@ -13,11 +13,12 @@
                 {% for link in links %}
                     <div class="past">
                         <a class="past__link" href="{{ link }}" target="_blank">{{ link }}</a>
-                        <i class="past__copy fas fa-copy"></i>
+                        <div class="past__copy">
+                            <i class="fas fa-clone"></i>
+                        </div>
                     </div>
                 {% endfor %}
             {% endif %}
         </div>
-        <p id="author">Разработал <a id="author__link" href="https://github.com/iluxaorlov" target="_blank">Илья Орлов</a></p>
     </div>
 {% endblock %}
